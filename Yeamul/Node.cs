@@ -8,13 +8,17 @@ namespace Yeamul {
 		[FieldOffset(0)] private NodeType type;
 		[FieldOffset(1)] private ScalarType scalarType;
 
-		[FieldOffset(2)] private bool booleanValue;
-		[FieldOffset(2)] private long longValue;
-		[FieldOffset(2)] private double doubleValue;
-		[FieldOffset(2)] private string stringValue;
-		[FieldOffset(2)] private List<Node> sequenceValue;
-		[FieldOffset(2)] private Dictionary<Node, Node> mapValue;
-		[FieldOffset(2)] private Dictionary<string, Node> mapValueCommonCase;   
+		[FieldOffset(2)] private NumberType numberType;
+		[FieldOffset(2)] private MapType mapType;
+
+		[FieldOffset(3)] private bool booleanValue;
+		[FieldOffset(3)] private long longValue;
+		[FieldOffset(3)] private Guid guidValue;
+		[FieldOffset(3)] private double doubleValue;
+		[FieldOffset(3)] private string stringValue; // TODO: Consider always having this
+		[FieldOffset(3)] private List<Node> sequenceValue;
+		[FieldOffset(3)] private Dictionary<Node, Node> mapValueNodeKey;
+		[FieldOffset(3)] private Dictionary<string, Node> mapValueStringKey;
 
 		// ReSharper disable once ConvertToAutoProperty
 		public NodeType Type {
