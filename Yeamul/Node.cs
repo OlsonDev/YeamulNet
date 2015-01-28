@@ -1,9 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Yeamul {
+	[StructLayout(LayoutKind.Explicit)]
 	public class Node {
-		public NodeType Type { get; set; }
-		public ScalarType ScalarType { get; set; }
+		[FieldOffset(0)] private NodeType type;
+		[FieldOffset(1)] private ScalarType scalarType;
+
+		[FieldOffset(2)] private bool booleanValue;
+		[FieldOffset(2)] private long longValue;
+		[FieldOffset(2)] private double doubleValue;
+		[FieldOffset(2)] private string stringValue;
+		[FieldOffset(2)] private List<Node> sequenceValue;
+		[FieldOffset(2)] private Dictionary<Node, Node> mapValue;
+		[FieldOffset(2)] private Dictionary<string, Node> mapValueCommonCase;   
+
+		// ReSharper disable once ConvertToAutoProperty
+		public NodeType Type {
+			get { return type; }
+			private set { type = value; }
+		}
+
+		public ScalarType ScalarType {
+			get { return scalarType; }
+			private set { scalarType = value; }
+		}
 
 		public bool IsUndefined => Type == NodeType.Undefined;
 		public bool IsDefined   => Type != NodeType.Undefined;
