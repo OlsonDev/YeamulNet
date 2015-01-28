@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapType.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="NodeType.cs" />
+    <Compile Include="NumberType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScalarType.cs" />
   </ItemGroup>
