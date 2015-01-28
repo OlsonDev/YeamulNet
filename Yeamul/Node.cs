@@ -12,17 +12,17 @@ namespace Yeamul {
 		[FieldOffset(8)] private NumberType numberType;
 		[FieldOffset(8)] private MapType mapType;
 
-		[FieldOffset(12)] private string stringValue; // TODO: Consider always having this (own field offset)
-		[FieldOffset(12)] private List<Node> sequenceValue; // TODO: Consider common cases List<long>, List<double>, List<string>
-		[FieldOffset(12)] private Dictionary<Node, Node> mapValueNodeKey;
-		[FieldOffset(12)] private Dictionary<string, Node> mapValueStringKey;
+		[FieldOffset(12)] private bool booleanValue;
+		[FieldOffset(12)] private long longValue;
+		[FieldOffset(12)] private ulong ulongValue;
+		[FieldOffset(12)] private Guid guidValue;	// 16 bytes (unsafe: http://stackoverflow.com/questions/6949598/can-i-assume-sizeofguid-16-at-all-times)
+		[FieldOffset(12)] private double doubleValue;
+		[FieldOffset(12)] private decimal decimalValue; // 16 bytes (safe)
 
-		[FieldOffset(20)] private bool booleanValue;
-		[FieldOffset(20)] private long longValue;
-		[FieldOffset(20)] private ulong ulongValue;
-		[FieldOffset(20)] private Guid guidValue;
-		[FieldOffset(20)] private double doubleValue;
-		[FieldOffset(20)] private decimal decimalValue;
+		[FieldOffset(28)] private string stringValue; // TODO: Consider always having this (own field offset)
+		[FieldOffset(28)] private List<Node> sequenceValue; // TODO: Consider common cases List<long>, List<double>, List<string>
+		[FieldOffset(28)] private Dictionary<Node, Node> mapValueNodeKey;
+		[FieldOffset(28)] private Dictionary<string, Node> mapValueStringKey;
 		
 		public NodeType Type {
 			get { return type; }
