@@ -7,21 +7,22 @@ namespace Yeamul {
 	[StructLayout(LayoutKind.Explicit)]
 	public class Node { // TODO: Consider converting to struct
 		[FieldOffset(0)] private NodeType type;
-		[FieldOffset(1)] private ScalarType scalarType;
+		[FieldOffset(4)] private ScalarType scalarType;
 
-		[FieldOffset(2)] private NumberType numberType;
-		[FieldOffset(2)] private MapType mapType;
+		[FieldOffset(8)] private NumberType numberType;
+		[FieldOffset(8)] private MapType mapType;
 
-		[FieldOffset(3)] private bool booleanValue;
-		[FieldOffset(3)] private long longValue;
-		[FieldOffset(3)] private ulong ulongValue;
-		[FieldOffset(3)] private Guid guidValue;
-		[FieldOffset(3)] private double doubleValue;
-		[FieldOffset(3)] private decimal decimalValue;
-		[FieldOffset(3)] private string stringValue; // TODO: Consider always having this (own field offset)
-		[FieldOffset(3)] private List<Node> sequenceValue;
-		[FieldOffset(3)] private Dictionary<Node, Node> mapValueNodeKey;
-		[FieldOffset(3)] private Dictionary<string, Node> mapValueStringKey;
+		[FieldOffset(12)] private string stringValue; // TODO: Consider always having this (own field offset)
+		[FieldOffset(12)] private List<Node> sequenceValue; // TODO: Consider common cases List<long>, List<double>, List<string>
+		[FieldOffset(12)] private Dictionary<Node, Node> mapValueNodeKey;
+		[FieldOffset(12)] private Dictionary<string, Node> mapValueStringKey;
+
+		[FieldOffset(20)] private bool booleanValue;
+		[FieldOffset(20)] private long longValue;
+		[FieldOffset(20)] private ulong ulongValue;
+		[FieldOffset(20)] private Guid guidValue;
+		[FieldOffset(20)] private double doubleValue;
+		[FieldOffset(20)] private decimal decimalValue;
 		
 		public NodeType Type {
 			get { return type; }
@@ -47,7 +48,7 @@ namespace Yeamul {
 		public override string ToString() {
 			switch (Type) {
 				case NodeType.Undefined:
-					throw new InvalidOperationException();
+					 throw new InvalidOperationException();
 				case NodeType.Scalar:
 					return ToStringAsScalar();
 				case NodeType.Sequence:
@@ -70,7 +71,8 @@ namespace Yeamul {
 				case ScalarType.Number:
 					return ToStringAsNumber();
 				case ScalarType.String:
-					return stringValue;
+					return "broken";
+					//return stringValue;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
