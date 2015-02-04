@@ -7,7 +7,7 @@
     <ProjectGuid>{50BE0189-FEF1-4BC0-B974-2F1543D73F36}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yeamul.Test</RootNamespace>
+    <RootNamespace>Yeamul</RootNamespace>
     <AssemblyName>Yeamul.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

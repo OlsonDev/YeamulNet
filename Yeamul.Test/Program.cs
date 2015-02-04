@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Yeamul.Test {
+namespace Yeamul {
 	class Program {
 		static void Main() {
 			Node nn = Node.Null;
