@@ -75,6 +75,7 @@ namespace Yeamul {
 			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Double, MapType.NotApplicable);
 		}
 
+		// ReSharper disable once UnusedParameter.Local
 		private static void AssertNodeIsDefinedScalar(Node node) {
 			Assert.That(node.IsDefined);
 			Assert.That(node.IsScalar);
