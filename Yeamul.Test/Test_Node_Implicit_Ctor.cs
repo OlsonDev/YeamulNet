@@ -82,6 +82,14 @@ namespace Yeamul {
 			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Decimal, MapType.NotApplicable);
 		}
 
+		[Test]
+		public void CanConstructImplicitlyFromString() {
+			Node node = String.Empty;
+			AssertNodeIsDefinedScalar(node);
+			Assert.That(node.IsString);
+			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.String, NumberType.NotANumber, MapType.NotApplicable);
+		}
+
 		// ReSharper disable once UnusedParameter.Local
 		private static void AssertNodeIsDefinedScalar(Node node) {
 			Assert.That(node.IsDefined);
