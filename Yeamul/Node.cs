@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace Yeamul {
 	[StructLayout(LayoutKind.Explicit)]
 	public class Node { // TODO: Consider converting to struct
-		[FieldOffset(0)] private NodeType type;
+		[FieldOffset(0)] private NodeType nodeType;
 		[FieldOffset(4)] private ScalarType scalarType;
 
 		[FieldOffset(8)] private NumberType numberType;
@@ -24,25 +24,24 @@ namespace Yeamul {
 		[FieldOffset(28)] private Dictionary<Node, Node> mapValueNodeKey;
 		[FieldOffset(28)] private Dictionary<string, Node> mapValueStringKey;
 		
-		public static readonly Node Null = new Node { type = NodeType.Scalar, scalarType = ScalarType.Null };
+		public static readonly Node Null = new Node { nodeType = NodeType.Scalar, scalarType = ScalarType.Null };
 
-		public NodeType Type => type;
-
+		public NodeType NodeType => nodeType;
 		public ScalarType ScalarType => scalarType;
 
-		public bool IsUndefined => Type == NodeType.Undefined;
-		public bool IsDefined   => Type != NodeType.Undefined;
-		public bool IsScalar    => Type == NodeType.Scalar;
-		public bool IsMap       => Type == NodeType.Map;
-		public bool IsSequence  => Type == NodeType.Sequence;
+		public bool IsUndefined => NodeType == NodeType.Undefined;
+		public bool IsDefined   => NodeType != NodeType.Undefined;
+		public bool IsScalar    => NodeType == NodeType.Scalar;
+		public bool IsMap       => NodeType == NodeType.Map;
+		public bool IsSequence  => NodeType == NodeType.Sequence;
 
-		public bool IsNull      => Type == NodeType.Scalar && ScalarType == ScalarType.Null;
-		public bool IsBoolean   => Type == NodeType.Scalar && ScalarType == ScalarType.Boolean;
-		public bool IsNumber    => Type == NodeType.Scalar && ScalarType == ScalarType.Number;
-		public bool IsString    => Type == NodeType.Scalar && ScalarType == ScalarType.String;
+		public bool IsNull      => NodeType == NodeType.Scalar && ScalarType == ScalarType.Null;
+		public bool IsBoolean   => NodeType == NodeType.Scalar && ScalarType == ScalarType.Boolean;
+		public bool IsNumber    => NodeType == NodeType.Scalar && ScalarType == ScalarType.Number;
+		public bool IsString    => NodeType == NodeType.Scalar && ScalarType == ScalarType.String;
 
 		public override string ToString() {
-			switch (Type) {
+			switch (NodeType) {
 				case NodeType.Undefined:
 					 throw new InvalidOperationException();
 				case NodeType.Scalar:
@@ -108,7 +107,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(bool value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Boolean,
 				booleanValue = value
 			};
@@ -116,7 +115,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(Int16 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Int16,
 				longValue = value
@@ -125,7 +124,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(Int32 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Int32,
 				longValue = value
@@ -134,7 +133,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(Int64 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Int64,
 				longValue = value
@@ -144,7 +143,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(UInt16 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.UInt16,
 				ulongValue = value
@@ -153,7 +152,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(UInt32 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.UInt32,
 				ulongValue = value
@@ -162,7 +161,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(UInt64 value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.UInt64,
 				ulongValue = value
@@ -171,7 +170,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(Guid value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Guid,
 				guidValue = value
@@ -180,7 +179,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(float value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Float,
 				doubleValue = value
@@ -190,7 +189,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(double value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Double,
 				doubleValue = value
@@ -199,7 +198,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(decimal value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.Number,
 				numberType = NumberType.Decimal,
 				decimalValue = value
@@ -208,7 +207,7 @@ namespace Yeamul {
 
 		public static implicit operator Node(string value) {
 			return new Node {
-				type = NodeType.Scalar,
+				nodeType = NodeType.Scalar,
 				scalarType = ScalarType.String,
 				stringValue = value
 			};
