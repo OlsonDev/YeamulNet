@@ -26,15 +26,9 @@ namespace Yeamul {
 		
 		public static readonly Node Null = new Node { type = NodeType.Scalar, scalarType = ScalarType.Null };
 
-		public NodeType Type {
-			get { return type; }
-			private set { type = value; }
-		}
+		public NodeType Type => type;
 
-		public ScalarType ScalarType {
-			get { return scalarType; }
-			private set { scalarType = value; }
-		}
+		public ScalarType ScalarType => scalarType;
 
 		public bool IsUndefined => Type == NodeType.Undefined;
 		public bool IsDefined   => Type != NodeType.Undefined;
