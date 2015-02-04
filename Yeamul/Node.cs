@@ -24,6 +24,8 @@ namespace Yeamul {
 		[FieldOffset(28)] private Dictionary<Node, Node> mapValueNodeKey;
 		[FieldOffset(28)] private Dictionary<string, Node> mapValueStringKey;
 		
+		public static readonly Node Null = new Node { type = NodeType.Scalar, scalarType = ScalarType.Null };
+
 		public NodeType Type {
 			get { return type; }
 			private set { type = value; }
@@ -71,8 +73,7 @@ namespace Yeamul {
 				case ScalarType.Number:
 					return ToStringAsNumber();
 				case ScalarType.String:
-					return "broken";
-					//return stringValue;
+					return stringValue;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
@@ -109,6 +110,114 @@ namespace Yeamul {
 
 		private string ToStringAsMap() {
 			throw new NotImplementedException();
+		}
+
+		public static implicit operator Node(bool value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Boolean,
+				booleanValue = value
+			};
+		}
+
+		public static implicit operator Node(Int16 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Int16,
+				longValue = value
+			};
+		}
+
+		public static implicit operator Node(Int32 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Int32,
+				longValue = value
+			};
+		}
+
+		public static implicit operator Node(Int64 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Int64,
+				longValue = value
+			};
+		}
+
+
+		public static implicit operator Node(UInt16 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.UInt16,
+				ulongValue = value
+			};
+		}
+
+		public static implicit operator Node(UInt32 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.UInt32,
+				ulongValue = value
+			};
+		}
+
+		public static implicit operator Node(UInt64 value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.UInt64,
+				ulongValue = value
+			};
+		}
+
+		public static implicit operator Node(Guid value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Guid,
+				guidValue = value
+			};
+		}
+
+		public static implicit operator Node(float value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Float,
+				doubleValue = value
+			};
+		}
+
+
+		public static implicit operator Node(double value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Double,
+				doubleValue = value
+			};
+		}
+
+		public static implicit operator Node(decimal value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.Number,
+				numberType = NumberType.Decimal,
+				decimalValue = value
+			};
+		}
+
+		public static implicit operator Node(string value) {
+			return new Node {
+				type = NodeType.Scalar,
+				scalarType = ScalarType.String,
+				stringValue = value
+			};
 		}
 	}
 }
