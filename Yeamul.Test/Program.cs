@@ -12,11 +12,23 @@ namespace Yeamul.Test {
 			Node nbf = false;
 			Console.WriteLine(nbf);
 
-			Node n32 = -5;
+			Node n16 = short.MinValue;
+			Console.WriteLine(n16);
+
+			Node n32 = int.MinValue;
 			Console.WriteLine(n32);
 
-			Node nu32 = 5u;
+			Node n64 = long.MinValue;
+			Console.WriteLine(n64);
+
+			Node nu16 = ushort.MaxValue;
+			Console.WriteLine(nu16);
+
+			Node nu32 = uint.MaxValue;
 			Console.WriteLine(nu32);
+
+			Node nu64 = ulong.MaxValue;
+			Console.WriteLine(nu64);
 
 			Node nf = 1.2f;
 			Console.WriteLine(nf);
