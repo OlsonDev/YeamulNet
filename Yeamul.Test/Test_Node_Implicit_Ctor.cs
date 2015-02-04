@@ -54,6 +54,13 @@ namespace Yeamul {
 			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.UInt64, MapType.NotApplicable);
 		}
 
+		[Test]
+		public void CanConstructImplicitlyFromGuid() {
+			Node node = Guid.NewGuid();
+			AssertNodeIsDefinedScalarNumber(node);
+			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Guid, MapType.NotApplicable);
+		}
+
 		private static void AssertNodeIsDefinedScalar(Node node) {
 			Assert.That(node.IsDefined);
 			Assert.That(node.IsScalar);
