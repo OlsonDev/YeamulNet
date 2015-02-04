@@ -85,11 +85,11 @@ namespace Yeamul {
 			Assert.That(node.IsNumber);
 		}
 
-		private void AssertNodeHasTypes(Node node, NodeType nodeType, ScalarType scalarType, NumberType numberType, MapType mapType) {
-			Assert.AreEqual(node.NodeType, nodeType);
-			Assert.AreEqual(node.ScalarType, scalarType);
-			Assert.AreEqual(node.NumberType, numberType);
-			Assert.AreEqual(node.MapType, mapType);
+		private static void AssertNodeHasTypes(Node node, NodeType nodeType, ScalarType scalarType, NumberType numberType, MapType mapType) {
+			Assert.AreEqual(nodeType  , node.NodeType);
+			Assert.AreEqual(scalarType, node.ScalarType);
+			Assert.AreEqual(numberType, node.NumberType);
+			Assert.AreEqual(mapType   , node.MapType);
 		}
 	}
 }
