@@ -2,7 +2,7 @@
 
 namespace Yeamul.Test {
 	class Program {
-		static void Main(string[] args) {
+		static void Main() {
 			Node nn = Node.Null;
 			Console.WriteLine(nn);
 
