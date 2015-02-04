@@ -61,6 +61,20 @@ namespace Yeamul {
 			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Guid, MapType.NotApplicable);
 		}
 
+		[Test]
+		public void CanConstructImplicitlyFromSingle() {
+			Node node = Single.MaxValue;
+			AssertNodeIsDefinedScalarNumber(node);
+			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Float, MapType.NotApplicable);
+		}
+
+		[Test]
+		public void CanConstructImplicitlyFromDouble() {
+			Node node = Double.MaxValue;
+			AssertNodeIsDefinedScalarNumber(node);
+			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.Double, MapType.NotApplicable);
+		}
+
 		private static void AssertNodeIsDefinedScalar(Node node) {
 			Assert.That(node.IsDefined);
 			Assert.That(node.IsScalar);
