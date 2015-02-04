@@ -5,6 +5,14 @@ namespace Yeamul {
 	[TestFixture]
 	public class Test_Node_Implicit_Ctor {
 		[Test]
+		public void CanConstructImplicitlyFromBoolean() {
+			Node node = true;
+			AssertNodeIsDefinedScalar(node);
+			Assert.That(node.IsBoolean);
+			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Boolean, NumberType.NotANumber, MapType.NotApplicable);
+		}
+
+		[Test]
 		public void CanConstructImplicitlyFromInt16() {
 			Node node = Int16.MaxValue;
 			AssertNodeIsDefinedScalarNumber(node);
@@ -46,9 +54,13 @@ namespace Yeamul {
 			AssertNodeHasTypes(node, NodeType.Scalar, ScalarType.Number, NumberType.UInt64, MapType.NotApplicable);
 		}
 
-		private static void AssertNodeIsDefinedScalarNumber(Node node) {
+		private static void AssertNodeIsDefinedScalar(Node node) {
 			Assert.That(node.IsDefined);
 			Assert.That(node.IsScalar);
+		}
+
+		private static void AssertNodeIsDefinedScalarNumber(Node node) {
+			AssertNodeIsDefinedScalar(node);
 			Assert.That(node.IsNumber);
 		}
 
