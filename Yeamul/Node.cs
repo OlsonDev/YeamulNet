@@ -28,6 +28,8 @@ namespace Yeamul {
 
 		public NodeType NodeType => nodeType;
 		public ScalarType ScalarType => scalarType;
+		public NumberType NumberType => IsNumber ? numberType : NumberType.NotANumber; // numberType shares FieldOffset with mapType, may be out of range
+		public MapType MapType => IsMap ? mapType : MapType.NotApplicable; // mapType shares FieldOffset with numberType, may be out of range
 
 		public bool IsUndefined => NodeType == NodeType.Undefined;
 		public bool IsDefined   => NodeType != NodeType.Undefined;

@@ -1,5 +1,7 @@
 ﻿namespace Yeamul {
 	public enum NumberType {
+		NotANumber,
+
 		Byte,
 		Char,
 
