@@ -49,6 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_Node_Implicit_Ctor.cs" />
+    <Compile Include="Test_Node_ToString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

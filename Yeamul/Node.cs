@@ -44,7 +44,7 @@ namespace Yeamul {
 		public bool IsString    => NodeType == NodeType.Scalar && ScalarType == ScalarType.String;
 
 		public override string ToString() {
-			switch (NodeType) {
+			switch (nodeType) {
 				case NodeType.Undefined:
 					 throw new InvalidOperationException();
 				case NodeType.Scalar:
@@ -65,7 +65,7 @@ namespace Yeamul {
 				case ScalarType.Null:
 					return "~";
 				case ScalarType.Boolean:
-					return booleanValue.ToString();
+					return booleanValue ? "true" : "false";
 				case ScalarType.Number:
 					return ToStringAsNumber();
 				case ScalarType.String:
