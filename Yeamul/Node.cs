@@ -34,6 +34,7 @@ namespace Yeamul {
 		public bool IsUndefined => NodeType == NodeType.Undefined;
 		public bool IsDefined   => NodeType != NodeType.Undefined;
 		public bool IsScalar    => NodeType == NodeType.Scalar;
+		public bool IsNonScalar => ScalarType == ScalarType.NonScalar;
 		public bool IsMap       => NodeType == NodeType.Map;
 		public bool IsSequence  => NodeType == NodeType.Sequence;
 
